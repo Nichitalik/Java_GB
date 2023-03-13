@@ -31,7 +31,7 @@ public class task_4 {
         Scanner reader = new Scanner(System.in);
         System.out.print("Введите первое число: ");
         num1 = reader.nextDouble();
-        // log.log(Level.INFO, "введено первое число: " + num1);
+        log.log(Level.INFO, "введено первое число: " + num1);
         System.out.print("Введите второе число: ");
         num2 = reader.nextDouble();
         log.log(Level.INFO, "введено второе число: " + num2);
