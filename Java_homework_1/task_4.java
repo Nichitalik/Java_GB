@@ -1,5 +1,3 @@
-import javax.lang.model.element.Element;
-
 public class task_4 {
     static int[] split_num(String s, int len) {
         int[] result = new int [len];
@@ -70,42 +68,42 @@ public class task_4 {
         boolean[] mask_w = mask(w);
         boolean[] mask_e = mask(e);
 
+        int int_q, int_w, int_e;
+
         char[] digit = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
 
-        boolean start = true;
-        while(start) {
-            for (int i = 0; i < mask_q.length; i++) {
-                for (int j = 0; j < mask_w.length; j++) {
-                    for (int j2 = 0; j2 < mask_e.length; j2++) {
+        for (int i = 0; i < mask_q.length; i++) {
+            for (int j = 0; j < mask_w.length; j++) {
+                for (int j2 = 0; j2 < mask_e.length; j2++) {
 
-                        for (char c : digit) {
-                            for (char k : digit) {
-                                for (char l : digit) {
-
-                                    if (mask_q[i] == false) q = repl(q, c, i);
-                                    if (mask_w[j] == false) w = repl(w, k, j);
-                                    if (mask_e[j2] == false) e = repl(e, l, j2);
-                                    System.out.println(q+'+'+w+'='+e);
-
-                                    try {
-                                        if (Integer.parseInt(q) + Integer.parseInt(w) == Integer.parseInt(e)) {
-                                            return String.format("s% + s% = s%", q, w, e);
-                                        }
-                                    }
-                                    catch (Exception E) {
-                                        start = true;
-                                    }
-                                }
-                            }
+                    for (char c : digit) {
+                        if(mask_q[i] == false)
+                        {
+                            q = repl(q, c, i);
+                            int_q = Integer.parseInt(q);
                         }
 
+                        for (char k : digit) {
+                            if(mask_q[i] == false)
+                            {
+                                w = repl(w, k, j);
+                                int_w= Integer.parseInt(w);
+                            }
+                            for (char l : digit) {
+                                if (mask_e[j2] == false)
+                                {
+                                    e = repl(e, l, j2);
+                                    int_e = Integer.parseInt(e);
+                                    return String.format("%d + %d = %d", q, w, e);
+                                }
+                                
+                            }
+                        }
                     }
+
                 }
             }
-            start = false;
         }
-
-
 
         return result;
     }
